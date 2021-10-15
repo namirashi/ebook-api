@@ -25,4 +25,10 @@ Route::post('books', [BookController::class, 'store']);
 Route::get('books/{id}', [BookController::class, 'show']);
 Route::put('books/{id}', [BookController::class, 'update']);
 Route::delete('books/{id}', [BookController::class, 'destroy']);
-Route::resource('authors', AuthorController::class);
+
+Route::resource('author', "\App\Http\Controllers\AuthorController")->except('edit', 'create')->middleware('auth:sanctum');
+
+Route::post('/me', [AuthController::class, 'me']);
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/me', [AuthController::class, 'me'])->middleware('auth:sanctum');

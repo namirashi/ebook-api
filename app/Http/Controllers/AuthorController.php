@@ -46,7 +46,7 @@ class AuthorController extends Controller
         $author->email = $request->email;
         $author->hp = $request->hp;
         $author->save();
-        return response()->json($author, 202);
+        return $author;
     }
 
     /**
